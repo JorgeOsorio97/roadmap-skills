@@ -82,6 +82,21 @@ let the user choose.
 Update the stage's row (status + PR link), append the log entry the roadmap
 requires, and state plainly anything you left out or deferred.
 
+Right after marking the stage `merged`, record this session so the conversation
+can be resumed later. Read the ID from the environment:
+
+```bash
+echo "$CLAUDE_CODE_SESSION_ID"
+```
+
+Append a row to the roadmap's **Sessions** table (create the section at the end of
+`ROADMAP.md` if it is missing): `| <stage #> | <YYYY-MM-DD> | <session id> |`. One
+row per session that worked the stage — a stage that took two sessions gets two
+rows. Never guess the ID: if the variable is empty, write `unknown` and say so.
+Resume with `claude --resume <session id>` from the same directory the session ran
+in — sessions are stored per project path, so one started inside a worktree is
+only found from that worktree's path.
+
 ## 8. Closing the roadmap
 
 When the stage you just closed was the last one (no `todo`, no `in progress` rows

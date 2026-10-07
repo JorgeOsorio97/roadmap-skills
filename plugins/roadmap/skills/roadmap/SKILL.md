@@ -46,6 +46,10 @@ creating a roadmap, check that `<work-name>` is not already taken there.
 - **"Done when"** per stage: runnable or observable. Never "the module works".
 - **Follow-ups / out of scope** — one line each, no design.
 - **Working agreements** (below), repeated in every roadmap.
+- **Sessions** — `Stage | Date | Session ID`, one row per session that closed or
+  worked a stage, so the conversation can be resumed with
+  `claude --resume <session id>`. Filled by `/continue-roadmap` when a stage
+  closes; the ID comes from `$CLAUDE_CODE_SESSION_ID`, never guessed.
 - A sibling **`CONTINUE.md`** carrying this work's gotchas and known-correct
   failures.
 
@@ -99,6 +103,10 @@ it archives the roadmap under `.claude/plans/finished/`.
 
 ## Follow-ups / out of scope
 - …
+
+## Sessions
+| Stage | Date | Session ID |
+|-------|------|------------|
 
 ## Working agreements
 - Update the stage row (status + PR link) and the implementation log in the same PR that lands the stage.
